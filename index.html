@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A simple interactive clothes dryer simulator." />
+  <title>Pause & Go Dryer Simulator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <header class="intro">
+      <p class="eyebrow">COMPUTATIONAL THINKING · INTERACTIVE MODEL</p>
+      <h1>Pause &amp; <span>Go</span></h1>
+      <p class="lede">Forgot something? Pause safely, adjust your load, and resume with every paid minute saved.</p>
+    </header>
+
+    <section class="simulator" aria-label="Clothes dryer simulator">
+      <div class="dryer-visual" aria-label="Dryer illustration">
+        <div class="dryer-body">
+          <div class="machine-controls" aria-hidden="true">
+            <span class="machine-mark">DRYER · 02</span>
+            <span class="machine-switch"><i></i></span>
+            <span class="control-light"></span>
+          </div>
+          <div class="open-drum" aria-hidden="true">
+            <span class="garment garment-shirt"></span>
+            <span class="garment garment-sock"></span>
+            <span class="garment garment-towel"></span>
+            <span class="garment garment-pants"></span>
+          </div>
+          <div id="dryerDoor" class="dryer-door closed" aria-hidden="true">
+            <div class="door-rim"><div class="drum"></div></div>
+            <span class="door-handle"></span>
+          </div>
+          <p id="doorLabel" class="door-label">DOOR CLOSED</p>
+        </div>
+      </div>
+
+      <div class="control-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="panel-kicker">CYCLE CONTROLS</p>
+            <h2>Dryer 02</h2>
+          </div>
+          <span id="stateBadge" class="state-badge idle">Idle</span>
+        </div>
+
+        <div class="timer-card">
+          <p>REMAINING TIME</p>
+          <output id="timer" aria-live="polite">30:00</output>
+          <span id="speedLabel">Normal speed</span>
+        </div>
+
+        <div class="selection-row">
+          <div>
+            <p class="label">TEMPERATURE</p>
+            <div id="temperatureButtons" class="temperature-buttons" aria-label="Temperature selection">
+              <button type="button" data-temp="low">Low</button>
+              <button type="button" data-temp="medium">Medium</button>
+              <button type="button" data-temp="high">High</button>
+            </div>
+          </div>
+          <div class="speed-control">
+            <p class="label">DEMO SPEED</p>
+            <label class="switch"><input id="demoSpeed" type="checkbox" /><span></span></label>
+            <small>1 second = 1 minute</small>
+          </div>
+        </div>
+
+        <div class="status-card" role="status" aria-live="polite">
+          <span class="status-dot"></span><p id="statusMessage">Payment required to begin.</p>
+        </div>
+
+        <div class="action-grid">
+          <button id="payButton" class="action primary">Pay $2.50</button>
+          <button id="startButton" class="action success" disabled>Start cycle</button>
+          <button id="pauseButton" class="action" disabled>Pause</button>
+          <button id="doorButton" class="action" disabled>Open door</button>
+          <button id="resumeButton" class="action success" disabled>Resume</button>
+          <button id="newCycleButton" class="action reset" hidden>New cycle</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="logic-note">
+      <div><span>STATE</span><strong id="stateReadout">idle</strong></div>
+      <div><span>TEMP</span><strong id="tempReadout">Not selected</strong></div>
+      <div><span>PAYMENT</span><strong id="paymentReadout">Not paid</strong></div>
+      <p>Tip: Pause before opening the door. Your paid time stays saved until you manually resume.</p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
